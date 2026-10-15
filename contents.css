@@ -1,0 +1,105 @@
+body.contents-page { min-height:100svh; }
+.contents-page .fence-scrapbook { min-height:100svh; display:flex; flex-direction:column; }
+.contents-page .book-stage { flex:1; min-height:calc(100svh - 120px); padding-block:40px; }
+.contents-page .scrapbook-meta a { color:inherit; text-decoration:none; }
+.contents-page .scrapbook-meta a:hover { text-decoration:underline; }
+@media(max-width:650px) { .contents-page .book-stage { padding-block:32px; } }
+
+.contents-page .book-note { position:relative; top:-12px; }
+
+.contents-page .archive-stamp { transition:transform 350ms ease, box-shadow 350ms ease; transform-origin:center; }
+@media (hover:hover) {
+  .contents-page .archive-stamp:hover { transform:rotate(-11deg) translateY(-3px); box-shadow:4px 9px 14px #24281944; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .contents-page .archive-stamp { transition:none; }
+}
+
+/* Leave room for all three chapters on the right page. */
+.contents-page .book-crest { width:58px; height:58px; }
+.contents-page .book-right h2#index-heading.contents-vector { margin:14px auto 24px; }
+.contents-page .archive-entry { padding:16px 0; }
+.contents-page .archive-entry h3 { font-size:32px; }
+.contents-page .book-note { margin-top:24px; top:0; margin-bottom:30px; }
+@media(max-width:650px) { .contents-page .archive-entry { padding:12px 0; } .contents-page .archive-entry h3 { font-size:26px; } }
+
+.contents-page .archive-stamp { isolation:isolate; }
+.contents-page .archive-stamp::after { content:""; position:absolute; inset:-8px; background:url("assets/house-paper-texture.png") center / cover; opacity:.58; mix-blend-mode:multiply; pointer-events:none; z-index:1; }
+@media(max-width:650px) { .contents-page .archive-stamp::after { inset:-4px; } }
+
+/* Expand the open book into the space between the navigation and footer. */
+.contents-page .fence-scrapbook { max-width:none; width:100%; box-sizing:border-box; padding:28px 3vw 32px; }
+.contents-page .book-stage { min-height:0; padding:20px 0; }
+.contents-page .book-stage .archive-book { min-height:calc(100svh - 132px); }
+.contents-page .book-page { min-height:0; }
+.contents-page .book-fence.book-illustration { height:clamp(340px, 43svh, 520px); }
+@media(max-width:650px) {
+  .contents-page .fence-scrapbook { padding:24px 3vw; }
+  .contents-page .book-stage { padding:18px 0; }
+  .contents-page .book-stage .archive-book { min-height:calc(100svh - 110px); }
+  .contents-page .book-fence.book-illustration { height:clamp(280px, 43svh, 420px); }
+}
+
+/* Center the page contents independently of the enlarged paper. */
+.contents-page .book-left { display:flex; align-items:center; justify-content:center; }
+.contents-page .book-left > .paper-kicker { position:absolute; top:38px; left:38px; }
+.contents-page .book-left .book-illustration { margin:0; }
+.contents-page .book-right { display:flex; flex-direction:column; align-items:center; justify-content:center; padding-block:70px; }
+.contents-page .book-right > .book-crest { flex-shrink:0; }
+.contents-page .book-right h2#index-heading.contents-vector { max-width:560px; flex-shrink:0; }
+.contents-page .book-right > .archive-entry { width:100%; max-width:560px; box-sizing:border-box; flex-shrink:0; }
+.contents-page .book-right > .book-note { margin-bottom:0; flex-shrink:0; }
+@media(max-width:650px) {
+  .contents-page .book-left > .paper-kicker { top:24px; left:16px; }
+  .contents-page .book-right { padding-block:54px; }
+}
+
+/* Edge-to-edge paper with navigation printed directly on the book. */
+body.contents-page { background:#e9ddb9; }
+.contents-page .fence-scrapbook { position:relative; padding:0; }
+.contents-page .book-stage { display:block; flex:1; padding:0; }
+.contents-page .book-stage .archive-book { width:100%; min-height:100svh; box-shadow:none; }
+.contents-page .book-page { box-sizing:border-box; padding-inline:7%; }
+.contents-page .book-right { padding-block:110px 90px; }
+.contents-page .scrapbook-meta,.contents-page .scrapbook-footer { position:absolute; left:0; width:100%; box-sizing:border-box; transform:none; padding-inline:24px; color:#53603a; z-index:4; }
+.contents-page .scrapbook-meta { top:28px; }
+.contents-page .scrapbook-footer { bottom:28px; }
+.contents-page .book-left > .paper-kicker { top:86px; left:14%; }
+.contents-page .archive-stamp { top:0; bottom:auto; left:auto; right:12%; width:100px; min-height:190px; box-sizing:border-box; padding:65px 12px 36px; border:0; outline:0; background:#d8c58c; transform:none; text-align:center; z-index:3; clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 22px),0 100%); box-shadow:none; }
+.contents-page .archive-stamp span { font-size:21px; line-height:1.05; }
+.contents-page .archive-stamp small { font-size:7px; line-height:1.6; letter-spacing:.1em; }
+.contents-page .archive-stamp::after { inset:0; }
+@media(hover:hover) { .contents-page .archive-stamp:hover { transform:translateY(5px); box-shadow:none; } }
+@media(max-width:650px) {
+  .contents-page .fence-scrapbook { padding:0; }
+  .contents-page .book-stage { padding:0; }
+  .contents-page .book-stage .archive-book { min-height:100svh; }
+  .contents-page .book-right { padding-block:100px 76px; }
+  .contents-page .scrapbook-meta,.contents-page .scrapbook-footer { padding-inline:14px; }
+  .contents-page .scrapbook-meta { top:24px; }
+  .contents-page .scrapbook-footer { bottom:24px; }
+  .contents-page .book-left > .paper-kicker { top:76px; left:10%; max-width:55%; }
+  .contents-page .archive-stamp { right:8%; width:72px; min-height:170px; padding:60px 8px 32px; }
+  .contents-page .archive-stamp span { font-size:17px; }
+  .contents-page .archive-stamp small { font-size:6px; }
+}
+
+/* Slightly enlarge the crest and give the three chapters more space. */
+.contents-page .book-crest { width:76px; height:76px; }
+.contents-page .book-right > .archive-entry { width:calc(100% + 20px); max-width:600px; padding:20px 0; }
+.contents-page .archive-entry h3 { font-size:35px; }
+.contents-page .archive-entry p { font-size:14px; }
+@media(max-width:650px) {
+  .contents-page .book-crest { width:64px; height:64px; }
+  .contents-page .book-right > .archive-entry { width:calc(100% + 10px); padding:15px 0; }
+  .contents-page .archive-entry h3 { font-size:28px; }
+  .contents-page .archive-entry p { font-size:11px; }
+}
+
+/* Extend the bookmark above the viewport while preserving its visible length. */
+.contents-page .archive-stamp { top:-40px; min-height:230px; padding-top:105px; }
+@media(max-width:650px) { .contents-page .archive-stamp { min-height:210px; padding-top:100px; } }
+
+/* One continuous paper image across the open book, without tiled seams. */
+.contents-page .book-page::after { display:none; }
+.contents-page .archive-book::after { content:""; position:absolute; inset:0; pointer-events:none; z-index:2; background:url("assets/house-paper-texture.png") center / cover no-repeat; mix-blend-mode:multiply; opacity:.38; }

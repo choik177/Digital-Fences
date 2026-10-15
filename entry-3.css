@@ -1,0 +1,198 @@
+body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display:flex; flex-direction:column; font-family:"PP Writer",Georgia,serif; }
+.puzzle-navigation,.puzzle-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:24px 4%; font:11px Arial,sans-serif; letter-spacing:.08em; }
+.puzzle-navigation { position:sticky; top:0; background:#202316; z-index:5; }
+.puzzle-page a { color:inherit; text-decoration:none; }
+.puzzle-page a:hover { text-decoration:underline; }
+.puzzle-page a:focus-visible { outline:1px solid currentColor; outline-offset:5px; }
+.puzzle-content { flex:1; width:min(100%,1100px); margin:0 auto; padding:60px 4%; }
+.puzzle-content h1 { text-align:center; font:italic 64px Baskerville,Georgia,serif; font-weight:400; }
+.puzzle-footer { border-top:1px solid #958450; }
+@media(max-width:600px) { .puzzle-navigation,.puzzle-footer { font-size:9px; padding:20px 5%; letter-spacing:0; } .puzzle-content h1 { font-size:48px; } }
+
+.puzzle-content { width:100%; max-width:none; box-sizing:border-box; padding:24px 3% 28px; }
+.puzzle-content h1 { margin:0 0 28px; }
+.decoration-studio { display:grid; grid-template-columns:3fr 1fr; min-height:calc(100svh - 230px); }
+.arched-windows { display:flex; align-items:center; justify-content:center; gap:5.5%; padding:60px 9%; }
+.arched-window { position:relative; width:28%; aspect-ratio:1 / 2; border-radius:100% 100% 0 0 / 50% 50% 0 0; background:#f9dda1; overflow:hidden; }
+.arched-window::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent calc(50% - 3px),#202316 calc(50% - 3px),#202316 calc(50% + 3px),transparent calc(50% + 3px)),linear-gradient(transparent 36%,#202316 36%,#202316 39%,transparent 39%,transparent 76%,#202316 76%,#202316 79%,transparent 79%); pointer-events:none; }
+.pattern-collection { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1.2fr .8fr 1fr; gap:22px 14px; padding:24px 18px; background:#f9dda1; }
+.pattern-slot { min-width:0; display:flex; align-items:center; justify-content:center; }
+.pattern-piece { display:block; width:100%; height:100%; max-height:180px; object-fit:contain; mix-blend-mode:multiply; cursor:grab; touch-action:none; user-select:none; -webkit-user-drag:none; position:relative; z-index:2; transform:translate(var(--drag-x,0px),var(--drag-y,0px)); }
+.pattern-slot.vine .pattern-piece { width:55%; }
+.pattern-slot.small .pattern-piece { width:75%; }
+.pattern-piece.is-dragging { cursor:grabbing; z-index:10; }
+.pattern-piece:focus-visible { outline:1px dashed #53603a; outline-offset:5px; }
+@media(max-width:600px) {
+  .puzzle-content { padding:20px 3%; }
+  .puzzle-content h1 { margin-bottom:24px; }
+  .decoration-studio { grid-template-columns:3fr 1.2fr; min-height:calc(100svh - 200px); }
+  .arched-windows { padding:40px 7%; gap:7%; }
+  .arched-window { width:28%; aspect-ratio:1 / 2.4; }
+  .arched-window::after { background:linear-gradient(90deg,transparent calc(50% - 2px),#202316 calc(50% - 2px),#202316 calc(50% + 2px),transparent calc(50% + 2px)),linear-gradient(transparent 36%,#202316 36%,#202316 39%,transparent 39%,transparent 76%,#202316 76%,#202316 79%,transparent 79%); }
+  .pattern-collection { padding:18px 8px; gap:18px 8px; }
+  .pattern-piece { max-height:150px; }
+}
+
+/* A horizontal ornament tray directly below the three windows. */
+.decoration-studio { grid-template-columns:1fr; grid-template-rows:1fr auto; min-height:calc(100svh - 230px); }
+.arched-windows { padding:32px 18%; gap:8%; }
+.arched-window { width:27%; max-width:190px; }
+.pattern-collection { grid-template-columns:repeat(6,minmax(0,1fr)); grid-template-rows:160px; background:#fff; padding:18px 24px; gap:24px; }
+.pattern-piece { height:100%; max-height:160px; }
+@media(max-width:600px) {
+  .decoration-studio { grid-template-columns:1fr; min-height:calc(100svh - 200px); }
+  .arched-windows { padding:28px 12%; gap:8%; }
+  .arched-window { aspect-ratio:1 / 2; }
+  .pattern-collection { grid-template-columns:repeat(6,minmax(0,1fr)); grid-template-rows:100px; padding:14px 10px; gap:10px; }
+  .pattern-piece { max-height:100px; }
+}
+
+.decoration-studio { grid-template-rows:1fr auto auto; }
+.arched-windows { padding:28px 12%; gap:7%; }
+.arched-window { width:28%; max-width:230px; }
+.pattern-collection { background:#f9dda1; }
+.decoration-controls { display:flex; justify-content:flex-end; padding:0 0 12px; }
+.decoration-reset { background:transparent; color:#f9dda1; border:1px solid #d8c58c; padding:8px 14px; font:11px Arial,sans-serif; letter-spacing:.08em; cursor:pointer; }
+.decoration-reset:hover { background:#f9dda1; color:#202316; }
+.decoration-reset:focus-visible { outline:2px solid #f9dda1; outline-offset:4px; }
+@media(max-width:600px) { .arched-windows { padding:24px 7%; gap:6%; } .arched-window { width:29%; } }
+
+/* Olive frames follow the rounded arch without changing the window size. */
+.arched-window { box-sizing:border-box; border:8px solid #8c9870; box-shadow:0 0 0 2px #626d43; }
+@media(max-width:600px) { .arched-window { border-width:5px; } }
+
+/* Two distinct arch frames: dark green inside, pale olive outside. */
+.arched-window { border-color:#38452b; box-shadow:0 0 0 8px #8c9870; }
+@media(max-width:600px) { .arched-window { box-shadow:0 0 0 5px #8c9870; } }
+
+.decoration-reset { border:0; padding:4px 10px; font-size:30px; line-height:1; letter-spacing:0; min-width:44px; min-height:44px; }
+.decoration-reset:hover { background:transparent; color:#fff0c8; }
+
+/* Repeat the supplied frieze across the top of the ornament tray. */
+.decoration-controls { min-height:54px; box-sizing:border-box; align-items:center; padding:4px 10px; background:#f9dda1 url("assets/decoration-fence-bar.png") left center / auto 100% repeat-x; }
+.decoration-reset { color:#202316; background:#f9dda1dd; border-radius:50%; }
+.decoration-reset:hover { color:#38452b; background:#f9dda1; }
+.decoration-reset:focus-visible { outline-color:#38452b; }
+@media(max-width:600px) { .decoration-controls { min-height:48px; padding-block:2px; } }
+
+/* Extend the frieze to both viewport edges. */
+.decoration-controls { width:100vw; margin-left:calc(50% - 50vw); padding-right:calc(3vw + 10px); }
+
+/* Full-width pattern tray and more breathing room below the windows. */
+.pattern-collection { width:100vw; margin-left:calc(50% - 50vw); box-sizing:border-box; padding-inline:calc(3vw + 24px); }
+.arched-windows { padding-bottom:70px; }
+@media(max-width:600px) {
+  .pattern-collection { padding-inline:calc(3vw + 10px); }
+  .arched-windows { padding-bottom:52px; }
+}
+
+/* Broader, shorter arched windows. */
+.arched-windows { padding-inline:8%; gap:6%; }
+.arched-window { width:29%; max-width:270px; aspect-ratio:1 / 1.35; }
+@media(max-width:600px) { .arched-windows { padding-inline:5%; gap:5%; } .arched-window { width:30%; aspect-ratio:1 / 1.35; } }
+
+/* Remove the pale outer window frame. */
+.arched-window { box-shadow:none; }
+
+/* Continue the yellow tray through the bottom labels. */
+.puzzle-content { padding-bottom:0; }
+.puzzle-footer { background:#f9dda1; color:#202316; border-top:0; }
+
+
+/* Five remaining ornaments, with a slightly larger heart-scroll stamp. */
+.pattern-collection { grid-template-columns:repeat(5,minmax(0,1fr)); }
+.pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { scale:1.12; }
+
+.puzzle-content h1.decoration-vector-title { font-size:0; line-height:0; }
+.decoration-vector-title img { display:block; width:clamp(220px,28vw,380px); max-width:90%; height:auto; margin:0 auto; }
+
+/* Keep the arched panes without an outer frame. */
+.arched-window { border:0; box-shadow:none; }
+
+.arched-windows { position:relative; }
+.decoration-stars { position:absolute; inset:0; pointer-events:none; }
+.decoration-star { position:absolute; width:clamp(32px,5.5vw,70px); height:auto; opacity:.9; filter:url(#decoration-star-cream); }
+.decoration-star-1 { left:3%; top:7%; transform:rotate(-19deg); }
+.decoration-star-2 { right:8%; top:4%; transform:rotate(17deg); }
+.decoration-star-3 { left:13%; bottom:5%; transform:rotate(-8deg); }
+.decoration-star-4 { right:3%; bottom:9%; transform:rotate(28deg); }
+
+/* Keep stars in dedicated space above and below the windows. */
+.decoration-star-1 { left:5%; top:18px; }
+.decoration-star-2 { right:7%; top:12px; }
+.decoration-star-3 { left:9%; bottom:22px; }
+.decoration-star-4 { right:5%; bottom:30px; }
+
+/* Match the paired spirals to the dark green ornament ink. */
+.pattern-piece[src="assets/decoration-scroll.svg"] { filter:url(#ornament-dark-green); mix-blend-mode:normal; }
+
+.decoration-star-5 { left:31%; top:2px; transform:rotate(-26deg); }
+.decoration-star-6 { right:31%; bottom:12px; transform:rotate(12deg); }
+
+.pattern-piece[src="assets/paired-scroll-green-transparent.png"] { filter:none; mix-blend-mode:normal; }
+
+/* Stars sit entirely in the existing clear space, without shifting the windows. */
+.decoration-star { width:clamp(24px,3vw,30px); }
+.decoration-star-1 { left:5%; top:-10px; bottom:auto; }
+.decoration-star-2 { right:5%; top:-10px; bottom:auto; }
+.decoration-star-5 { left:48%; top:-10px; bottom:auto; }
+.decoration-star-3 { left:9%; top:auto; bottom:10px; }
+.decoration-star-4 { right:5%; top:auto; bottom:10px; }
+.decoration-star-6 { right:46%; top:auto; bottom:10px; }
+
+/* Use one shared thickness for horizontal and vertical window bars. */
+.arched-window { --bar-half:3px; }
+.arched-window::after { background:linear-gradient(90deg,transparent calc(50% - var(--bar-half)),#202316 calc(50% - var(--bar-half)),#202316 calc(50% + var(--bar-half)),transparent calc(50% + var(--bar-half))),linear-gradient(transparent calc(37.5% - var(--bar-half)),#202316 calc(37.5% - var(--bar-half)),#202316 calc(37.5% + var(--bar-half)),transparent calc(37.5% + var(--bar-half)),transparent calc(77.5% - var(--bar-half)),#202316 calc(77.5% - var(--bar-half)),#202316 calc(77.5% + var(--bar-half)),transparent calc(77.5% + var(--bar-half))); }
+@media(max-width:600px) { .arched-window { --bar-half:2px; } }
+
+/* Repeat the same full-width decorative frieze below the title. */
+.decoration-top-bar { width:100vw; margin-left:calc(50% - 50vw); height:54px; background:#f9dda1 url("assets/decoration-fence-bar.png") left center / auto 100% repeat-x; }
+@media(max-width:600px) { .decoration-top-bar { height:48px; } }
+
+/* Lift the ornament tray from below the screen with the arrow handle. */
+.decoration-studio { grid-template-rows:1fr; }
+.pattern-drawer { position:fixed; z-index:10; left:0; bottom:0; width:100%; transform:translateY(calc(100% - 44px)); transition:transform 400ms ease; }
+.pattern-drawer.is-open { transform:translateY(0); }
+.pattern-drawer-toggle { display:block; margin:0 auto; width:64px; height:44px; border:0; border-radius:12px 12px 0 0; background:#f9dda1; color:#202316; font:28px Arial,sans-serif; cursor:pointer; }
+.pattern-drawer .decoration-controls,.pattern-drawer .pattern-collection { width:100%; margin-left:0; }
+.pattern-drawer-toggle:focus-visible { outline:2px solid #8c9870; outline-offset:-4px; }
+@media(prefers-reduced-motion:reduce) { .pattern-drawer { transition:none; } }
+
+/* A half-screen paper folder with a separately scrolling sticker sheet. */
+.pattern-drawer { height:50svh; max-height:50svh; padding:0 18px; box-sizing:border-box; background:#b59b65; border-radius:20px 20px 0 0; box-shadow:0 -8px 24px #10130b45; transform:translateY(calc(100% - 44px)); isolation:isolate; }
+.pattern-drawer::before { content:""; position:absolute; inset:0; z-index:-1; background:url("assets/house-paper-texture.png") center / cover no-repeat; mix-blend-mode:multiply; opacity:.48; pointer-events:none; border-radius:inherit; }
+.pattern-drawer-toggle { position:relative; margin:0 0 0 3%; width:190px; height:44px; padding:0 20px; display:flex; align-items:center; justify-content:space-between; border-radius:16px 25px 0 0; background:#d8c58c; color:#303823; font:italic 22px Baskerville,Georgia,serif; touch-action:none; }
+.folder-arrow { font:26px Arial,sans-serif; }
+#pattern-drawer-content { height:calc(100% - 44px); display:flex; flex-direction:column; min-height:0; padding:10px 12px 0; box-sizing:border-box; background:#efe3be; border-radius:8px 8px 0 0; box-shadow:0 -2px 7px #30382325; }
+.pattern-drawer .decoration-controls { min-height:38px; height:38px; flex-shrink:0; background:none; padding:0 4px; }
+.pattern-drawer .decoration-reset { min-height:34px; height:34px; font-size:27px; background:transparent; }
+.pattern-drawer .pattern-collection { flex:1; min-height:0; width:100%; box-sizing:border-box; margin:0; padding:18px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:none; grid-auto-rows:150px; gap:24px 30px; overflow-y:auto; overscroll-behavior:contain; scrollbar-color:#8b7951 #efe3be; background-color:#f4ebd2; background-image:linear-gradient(#8b79511a 1px,transparent 1px),linear-gradient(90deg,#8b79511a 1px,transparent 1px); background-size:18px 18px; }
+.pattern-drawer .pattern-piece { max-height:140px; height:100%; scale:1; }
+.placed-ornament { position:absolute; z-index:8; object-fit:contain; cursor:grab; touch-action:none; user-select:none; mix-blend-mode:multiply; }
+.placed-ornament.is-dragging { z-index:30; cursor:grabbing; }
+.placed-ornament:focus-visible { outline:1px dashed #8c9870; outline-offset:5px; }
+@media(max-width:600px) { .pattern-drawer { padding-inline:10px; } .pattern-drawer .pattern-collection { grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:130px; padding:14px; gap:20px; } .pattern-drawer .pattern-piece { max-height:120px; } }
+
+/* Move the windows into the upper half while the folder is open. */
+.arched-windows { transition:transform 400ms ease; transform-origin:center top; }
+body.folder-open .arched-windows { position:fixed; z-index:7; top:76px; left:0; width:100%; height:calc(50svh - 92px); box-sizing:border-box; padding:12px 12% 22px; gap:7%; animation:windows-rise 400ms ease both; }
+body.folder-open .arched-window { width:auto; height:100%; max-width:27%; flex:0 1 auto; aspect-ratio:1 / 1.35; }
+body.folder-open .decoration-vector-title { opacity:0; transition:opacity 200ms ease; }
+@keyframes windows-rise { from { transform:translateY(50px); opacity:.65; } to { transform:translateY(0); opacity:1; } }
+@media(max-width:600px) { body.folder-open .arched-windows { top:66px; height:calc(50svh - 80px); padding-inline:7%; gap:6%; } }
+@media(prefers-reduced-motion:reduce) { .arched-windows { transition:none; } body.folder-open .arched-windows { animation:none; } }
+
+/* Match the folder tab to the cream control strip below it. */
+.pattern-drawer-toggle { background:#efe3be; }
+
+.pattern-drawer .decoration-reset { translate:0 -5px; }
+
+/* Reduce the title-to-window gap only while the folder is closed. */
+body:not(.folder-open) .arched-windows { transform:translateY(-24px); }
+
+.decoration-logo-divider { display:flex; align-items:center; justify-content:center; gap:24px; height:54px; margin:0 1% 12px; }
+.decoration-logo-divider::before,.decoration-logo-divider::after { content:""; flex:1; height:1px; background:#958450; }
+.decoration-logo-crest { flex:0 0 62px; }
+.decoration-logo-crest img { display:block; width:100%; height:54px; object-fit:contain; }
+body.folder-open .decoration-logo-divider { visibility:hidden; }
+@media(max-width:600px) { .decoration-logo-divider { gap:18px; height:46px; margin-bottom:8px; } .decoration-logo-crest { flex-basis:52px; } .decoration-logo-crest img { height:46px; } }

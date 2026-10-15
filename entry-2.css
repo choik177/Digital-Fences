@@ -1,0 +1,86 @@
+body.chapter-two { background:#fbdda0; color:#202316; }
+.chapter-navigation,.chapter-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:24px 4%; font:11px Arial,sans-serif; letter-spacing:.08em; }
+.chapter-navigation a,.chapter-footer a { color:inherit; text-decoration:none; }
+.chapter-navigation a:hover,.chapter-footer a:hover { text-decoration:underline; }
+.chapter-two .chain-panel { margin-top:0; }
+.chapter-footer { border-top:1px solid #958450; }
+.chapter-two a:focus-visible { outline:1px solid currentColor; outline-offset:5px; }
+@media(max-width:600px) { .chapter-navigation,.chapter-footer { font-size:9px; padding:20px 5%; letter-spacing:0; } }
+
+/* Full-width writing space begins immediately below the chain fence. */
+.chapter-two .chain-writing { width:100%; min-height:50svh; margin:0; padding:56px 6%; background:#202316; color:#d8c58c; }
+.chain-writing-content { max-width:1100px; margin:0 auto; font:18px/1.6 "PP Writer",Georgia,serif; }
+@media(max-width:600px) { .chapter-two .chain-writing { padding:56px 6%; } }
+
+.chapter-two .chain-lion { display:block; width:100%; height:100%; object-fit:contain; }
+
+/* Fit the chain panel to the lion artwork without yellow letterboxing. */
+.chapter-two .chain-panel { aspect-ratio:1086 / 1449; background:#f2dba5; }
+
+.chapter-two .chapter-navigation { background:#202316; color:#d8c58c; }
+
+.chapter-two .chain-street { display:block; width:100%; height:100%; object-fit:contain; object-position:center; }
+
+/* One undistorted chain layer stays still while the full photograph scrolls. */
+.chapter-two .chain-panel { overflow:clip; }
+.chain-fixed-window { position:sticky; top:0; height:100svh; width:100%; overflow:hidden; z-index:1; pointer-events:none; }
+.chapter-two .chain-overlay { position:absolute; inset:0 auto auto 0; width:100%; height:auto; aspect-ratio:1838 / 1344; }
+
+.chapter-two .chapter-navigation { padding-top:36px; padding-bottom:36px; }
+@media(max-width:600px) { .chapter-two .chapter-navigation { padding-top:30px; padding-bottom:30px; } }
+
+/* Extend below the labels without changing their vertical position. */
+.chapter-two .chapter-navigation { padding-bottom:60px; }
+@media(max-width:600px) { .chapter-two .chapter-navigation { padding-bottom:50px; } }
+
+/* Override the more specific shared chapter navigation rule. */
+body.entry-page.chapter-two > .chapter-navigation { box-sizing:border-box; height:64px; min-height:64px; padding:24px 4% 0; align-items:flex-start; background:#202316; color:#d8c58c; line-height:13px; }
+@media(max-width:600px) { body.entry-page.chapter-two > .chapter-navigation { height:56px; min-height:56px; padding:20px 5% 0; line-height:11px; } }
+
+body.entry-page.chapter-two > .chapter-navigation { position:sticky; top:0; z-index:5; }
+.chapter-two .chain-fixed-window { top:64px; height:calc(100svh - 64px); }
+@media(max-width:600px) { .chapter-two .chain-fixed-window { top:56px; height:calc(100svh - 56px); } }
+
+/* Foreground collage stays pinned together over the scrolling photograph. */
+.chapter-two .chain-card { position:absolute; z-index:2; top:29%; width:27%; height:auto; pointer-events:auto; }
+.chain-card-left { left:5.3%; }
+.chain-card-right { right:7.5%; }
+.chapter-two .chain-calligraphy { position:absolute; z-index:3; left:50%; top:5%; width:34%; height:auto; transform:translateX(-50%); }
+@media(max-width:600px) { .chapter-two .chain-card { width:31%; top:30%; } .chain-card-left { left:4%; } .chain-card-right { right:4%; } .chapter-two .chain-calligraphy { width:46%; top:9%; } }
+
+.chapter-two .chain-calligraphy { left:50%; top:50%; transform:translate(-50%,-50%); }
+
+.chapter-two .chain-overlay { opacity:0; visibility:hidden; transition:opacity 1200ms ease, visibility 1200ms ease; }
+.chapter-two .chain-overlay.is-visible { opacity:1; visibility:visible; }
+.privacy-toggle { position:absolute; z-index:3; left:50%; top:50%; width:34%; transform:translate(-50%,-50%); padding:0; border:0; background:none; cursor:pointer; pointer-events:auto; }
+.chapter-two .privacy-toggle .chain-calligraphy { position:static; display:block; width:100%; height:auto; transform:none; }
+.privacy-toggle:focus-visible { outline:1px solid #f9da9c; outline-offset:8px; }
+@media(max-width:600px) { .privacy-toggle { width:46%; } }
+@media(prefers-reduced-motion:reduce) { .chapter-two .chain-overlay { transition:none; } }
+
+/* Equal side offsets center the pair around the page midpoint. */
+.chapter-two .chain-card-left { left:6.4%; right:auto; }
+.chapter-two .chain-card-right { right:6.4%; left:auto; }
+@media(max-width:600px) { .chapter-two .chain-card-left { left:4%; } .chapter-two .chain-card-right { right:4%; } }
+
+/* Soften only the street background and reduce the central lettering. */
+.chapter-two .chain-street { filter:blur(5px); }
+.chapter-two .chain-collage::after { content:""; position:absolute; inset:0; background:transparent; pointer-events:none; }
+.chapter-two .privacy-toggle { width:27%; }
+@media(max-width:600px) { .chapter-two .privacy-toggle { width:37%; } }
+
+body.entry-page.chapter-two > .chapter-footer { background:#202316; color:#d8c58c; }
+
+/* Three evenly spaced photographs with the yellow lettering across them. */
+.chapter-two .chain-card { width:27%; top:50%; transform:translateY(-50%); }
+.chapter-two .chain-card-left { left:5.5%; right:auto; }
+.chapter-two .chain-card-center { left:50%; transform:translate(-50%,-50%); }
+.chapter-two .chain-card-right { right:5.5%; left:auto; }
+.chapter-two .privacy-toggle { width:58%; }
+@media(max-width:600px) { .chapter-two .chain-card { width:29%; } .chapter-two .chain-card-left { left:3%; } .chapter-two .chain-card-right { right:3%; } .chapter-two .privacy-toggle { width:66%; } }
+
+.chapter-two .privacy-toggle { width:29%; }
+@media(max-width:600px) { .chapter-two .privacy-toggle { width:33%; } }
+
+.chapter-two .privacy-toggle { width:27%; }
+@media(max-width:600px) { .chapter-two .privacy-toggle { width:29%; } }

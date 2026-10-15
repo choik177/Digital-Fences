@@ -1,0 +1,315 @@
+body.scrapbook-home { height:auto; min-height:100%; overflow-x:hidden; overflow-y:auto; background:#202316; color:#242819; font-family:'PP Writer Book',Georgia,serif; }
+.scrapbook-home html { height:auto; }
+.fence-scrapbook { max-width:1120px; padding:28px 42px 32px; margin:auto; }
+.scrapbook-meta,.scrapbook-footer { display:flex; justify-content:space-between; gap:16px; font:11px Arial,sans-serif; letter-spacing:.12em; color:#f5dda1; }
+.fence-envelope { position:relative; isolation:isolate; margin:56px 0 90px; min-height:530px; padding:64px 44px 28px; background:#515b39; color:#f5e2ad; transform:rotate(-2deg); box-shadow:3px 12px 16px #17201166; overflow:hidden; }
+.fence-envelope::after,.note-paper::after,.book-page::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.13; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.6' filter='url(%23n)'/%3E%3C/svg%3E"); mix-blend-mode:soft-light; }
+.envelope-flap { position:absolute; inset:0; z-index:-1; background:linear-gradient(165deg,#7a8053,#626d43); clip-path:polygon(0 0,100% 0,50% 60%); filter:drop-shadow(0 8px 3px #0008); }
+.fence-envelope::before { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(32deg,transparent 49.8%,#b9be8050 50%,transparent 50.2%),linear-gradient(-32deg,transparent 49.8%,#b9be8050 50%,transparent 50.2%); }
+.envelope-caption { text-align:center; font-size:15px; letter-spacing:.08em; }
+.fence-envelope h1 { margin:44px auto 16px; font:italic clamp(88px,13vw,168px)/.78 Baskerville,'Times New Roman',serif; letter-spacing:-.075em; text-align:center; font-weight:400; }
+.fence-envelope h1 em { display:block; font:inherit; margin-left:70px; }
+.envelope-number { position:absolute; right:54px; top:47%; font-size:18px; }
+.envelope-footer { margin-top:56px; display:flex; justify-content:space-between; align-items:center; font:10px Arial,sans-serif; letter-spacing:.12em; }
+.envelope-footer a { color:inherit; text-decoration:none; border-bottom:1px solid #efda9e88; padding-bottom:5px; }
+.field-notes { position:relative; min-height:450px; margin:0 25px 48px; display:flex; align-items:center; scroll-margin-top:32px; }
+.fence-lace { position:absolute; width:83%; height:167%; right:-89px; top:-153px; opacity:.85; background:url('assets/lace-oval-transparent.png') center/contain no-repeat; transform:rotate(15deg); pointer-events:none; }
+.note-paper { position:relative; width:78%; padding:52px 28% 48px 44px; background:#eeddb1; transform:rotate(2deg); box-shadow:2px 6px 10px #17201144; }
+.paper-kicker { font:9px Arial,sans-serif; letter-spacing:.16em; }
+.note-paper h2,.book-right h2 { font:italic 52px/.95 Baskerville,'Times New Roman',serif; font-weight:400; letter-spacing:-.045em; color:#53603a; margin:26px 0; }
+.note-paper p { font-size:17px; line-height:1.4; }
+.note-rule { height:1px; background:#7d835454; margin:26px 0 16px; }
+.handwritten-note { font-style:italic; font-size:16px; }
+.photo-print { position:absolute; right:0; top:14px; width:31%; padding:14px 14px 22px; background:#f7e9c6; color:#303823; text-decoration:none; transform:rotate(-5deg); box-shadow:5px 10px 10px #17201166; transition:transform .25s; }
+.photo-print:hover { transform:rotate(-2deg) translateY(-5px); }
+.photo-print img { display:block; width:100%; height:310px; object-fit:cover; }
+.photo-print > span:last-child { display:flex; justify-content:space-between; margin-top:14px; font-size:16px; }
+.paper-clip { position:absolute; right:10px; top:-12px; width:18px; height:78px; border:3px solid #888571; border-radius:14px; transform:rotate(20deg); box-shadow:1px 1px 2px #0005; }
+.archive-book { position:relative; display:grid; grid-template-columns:1fr 1fr; margin:0 24px 50px; transform:rotate(-1deg); box-shadow:8px 16px 18px #17201166; }
+.book-page { position:relative; min-height:520px; background:#e9ddb9; padding:38px; }
+.book-left { background:linear-gradient(90deg,#e9ddb9 90%,#b6aa89 100%); }
+.book-right { background:linear-gradient(90deg,#c2b593,#f0e4c3 12%,#e9ddb9); text-align:center; }
+.book-fence { display:block; width:55%; height:340px; margin:24px auto; object-fit:contain; }
+.archive-stamp { position:absolute; left:-24px; bottom:30px; padding:20px 26px; border:1px solid #6a7547; outline:8px solid #d8c58c; background:#d8c58c; transform:rotate(-7deg); box-shadow:2px 5px 8px #24281944; }
+.archive-stamp span { display:block; font:italic 28px Baskerville,serif; }
+.archive-stamp small { display:block; margin-top:8px; font:8px Arial,sans-serif; letter-spacing:.15em; }
+.book-crest { width:70px; height:70px; object-fit:contain; }
+.book-right h2 { margin:18px 0 34px; font-size:64px; }
+.archive-entry { display:flex; align-items:center; gap:20px; border-block:1px solid #68704677; padding:24px 0; color:inherit; text-decoration:none; text-align:left; }
+.archive-entry > span { font-size:17px; }
+.archive-entry > span:last-child { margin-left:auto; }
+.archive-entry h3 { font:italic 36px Baskerville,serif; font-weight:400; }
+.archive-entry p { font-size:13px; margin-top:6px; }
+.archive-entry:hover h3 { color:#778447; }
+.book-note { margin-top:36px; font-size:16px; line-height:1.4; font-style:italic; }
+.page-number { position:absolute; bottom:22px; left:50%; font-size:12px; }
+.scrapbook-home a:focus-visible { outline:2px solid #b8a45e; outline-offset:6px; }
+@media(max-width:650px) { .fence-scrapbook { padding:24px 22px; } .scrapbook-meta,.scrapbook-footer { font-size:8px; } .fence-envelope { min-height:370px; padding:44px 18px 22px; margin-bottom:71px; } .envelope-caption { font-size:10px; } .fence-envelope h1 { font-size:clamp(76px,19vw,124px); margin-top:52px; } .fence-envelope h1 em { margin-left:24px; } .envelope-number { right:16px; font-size:12px; top:36%; } .envelope-footer { font-size:7px; gap:14px; margin-top:50px; } .field-notes { margin:0 4px 36px; min-height:510px; align-items:start; } .note-paper { width:93%; padding:32px 26px 130px; } .note-paper h2 { font-size:43px; } .note-paper p { font-size:15px; } .photo-print { width:43%; top:260px; right:-4px; padding:9px 9px 15px; } .photo-print img { height:180px; } .photo-print > span:last-child { font-size:12px; } .fence-lace { width:98%; height:150%; right:-29px; top:-108px; } .archive-book { margin:0 0 40px; } .book-page { padding:24px 16px; min-height:430px; } .book-fence { width:80%; height:280px; } .paper-kicker { font-size:7px; } .archive-stamp { left:-6px; padding:12px; bottom:28px; outline-width:4px; } .archive-stamp span { font-size:19px; } .archive-stamp small { font-size:6px; } .book-right h2 { font-size:46px; } .book-crest { width:50px; height:50px; } .archive-entry { gap:8px; padding:18px 0; } .archive-entry h3 { font-size:28px; } .archive-entry p { font-size:10px; } .book-note { font-size:13px; margin-top:22px; } }
+@media(prefers-reduced-motion:reduce) { .photo-print { transition:none; } }
+
+.archive-entry + .archive-entry { border-top:0; }
+
+.book-stage { min-height:calc(100svh - 80px); display:grid; place-items:center; padding:32px 24px; }
+.book-stage .archive-book { width:100%; margin:0; transform:none; }
+@media(max-width:650px) { .book-stage { padding:24px 0; } }
+
+.book-fence.book-illustration { width:100%; object-fit:contain; mix-blend-mode:multiply; }
+
+.book-crest { filter:url(#crest-paper-yellow); }
+
+/* Metadata spans the viewport while the collage keeps its existing width. */
+.scrapbook-meta,.scrapbook-footer { position:relative; left:50%; width:calc(100vw - 48px); transform:translateX(-50%); }
+@media(max-width:650px) { .scrapbook-meta,.scrapbook-footer { width:calc(100vw - 28px); } }
+
+/* Mix calligraphic details with the Baskerville title. */
+@font-face { font-family:"Classic Script MN"; src:local("Classic Script MN"),local("ClassicScriptMN"); font-weight:400; font-style:normal; }
+.fence-envelope h1 .title-line { display:block; white-space:nowrap; }
+.fence-envelope h1 .script-initial,.fence-envelope h1 .script-ending { font-family:"Classic Script MN","Snell Roundhand","Baskerville",cursive; font-style:normal; font-weight:400; letter-spacing:-.055em; }
+.fence-envelope h1 .script-initial { display:inline-block; font-size:1.12em; line-height:.7; margin-right:-.07em; }
+.fence-envelope h1 .script-ending { font-size:.94em; }
+.fence-envelope h1 .serif-initial { font-family:Baskerville,"Times New Roman",serif; font-style:italic; }
+
+/* Balance the script's smaller lowercase height against Baskerville. */
+.fence-envelope h1 { font-size:clamp(80px,12vw,150px); line-height:1; letter-spacing:-.065em; }
+.fence-envelope h1 .title-line { width:fit-content; margin-inline:auto; }
+.fence-envelope h1 .script-initial { font-size:1em; line-height:inherit; margin-right:.20em; }
+.fence-envelope h1 em.title-line { margin-top:-.12em; margin-left:auto; transform:translateX(.16em); }
+.fence-envelope h1 .script-ending { display:inline-block; font-size:1.48em; line-height:.65; letter-spacing:-.045em; margin-left:-.065em; }
+@media(max-width:650px) {
+ .fence-envelope h1 { font-size:clamp(62px,16vw,104px); line-height:1; }
+}
+
+/* Fold lines follow the corners at every envelope aspect ratio. */
+.fence-envelope::before { background:none; }
+.envelope-folds { position:absolute; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none; overflow:visible; }
+.envelope-folds path { fill:none; stroke:#b9be8050; stroke-width:1; vector-effect:non-scaling-stroke; }
+
+.fence-envelope h1 .script-ending .serif-n { font-family:Baskerville,"Times New Roman",serif; font-size:.675676em; font-style:italic; font-weight:400; letter-spacing:-.065em; }
+
+/* Match visible lowercase heights and keep mixed glyphs from colliding. */
+.fence-envelope h1 .script-ending { display:inline-flex; align-items:baseline; gap:.025em; letter-spacing:-.025em; margin-left:-.035em; }
+.fence-envelope h1 .script-ending .serif-n { font-size:.59em; line-height:1; letter-spacing:0; margin-inline:.025em; }
+.fence-envelope h1 .script-initial { margin-right:.20em; }
+
+/* Compact two-line lettering based on the supplied title reference. */
+.fence-envelope h1 { line-height:.82; letter-spacing:-.06em; }
+.fence-envelope h1 .script-initial { margin-right:.12em; }
+.fence-envelope h1 em.title-line { font-size:.98em; margin-top:-.025em; transform:translateX(-.025em); }
+.fence-envelope h1 .script-ending { font-size:1.55em; line-height:.65; gap:0; margin-left:-.085em; letter-spacing:-.04em; }
+.fence-envelope h1 .script-ending .serif-n { font-size:.62em; margin-inline:-.005em .005em; letter-spacing:-.04em; }
+@media(max-width:650px) { .fence-envelope h1 { line-height:.82; } }
+
+/* Use the supplied outlined title so letterforms and spacing stay exact. */
+.fence-envelope h1.vector-title { width:min(70%,560px); margin:42px auto 16px; font-size:0; line-height:0; letter-spacing:0; }
+.vector-title img { display:block; width:100%; height:auto; }
+@media(max-width:650px) { .fence-envelope h1.vector-title { width:78%; margin:38px auto 16px; } }
+
+.envelope-subtitle { position:absolute; top:74px; left:0; width:100%; text-align:center; color:#f9da9c; font:16px/1.4 "PP Writer",Georgia,serif; }
+@media(max-width:650px) { .envelope-subtitle { top:60px; font-size:13px; } }
+
+/* Rounded flap tip, with its fold outline following the same curve. */
+svg.envelope-flap { width:100%; height:100%; clip-path:none; background:none; }
+.book-right h2#index-heading { font-size:clamp(32px,4vw,48px); line-height:1.05; }
+@media(max-width:650px) { .book-right h2#index-heading { font-size:30px; } }
+
+.book-right h2#index-heading.contents-vector { font-size:0; line-height:0; width:100%; margin:18px auto 34px; }
+.contents-vector img { display:block; width:100%; height:auto; }
+
+.envelope-footer > span { position:relative; top:8px; }
+
+/* End the home page at its footer, including decorative overflow. */
+html:has(body.scrapbook-home:not(.contents-page)) { height:auto; }
+body.scrapbook-home:not(.contents-page) { min-height:0; }
+body.scrapbook-home:not(.contents-page) .fence-scrapbook { padding-bottom:28px; overflow-x:visible; overflow-y:clip; }
+
+.note-paper > p,.note-paper > .note-rule { width:90%; }
+
+@media(max-width:650px) { body.scrapbook-home:not(.contents-page) .fence-scrapbook { padding-bottom:24px; } }
+
+/* The letter rises from below the envelope as the opening scene scrolls. */
+body.scrapbook-home:not(.contents-page) .fence-scrapbook { overflow:visible; }
+.letter-scroll-scene { position:relative; height:200svh; width:100vw; margin-left:calc(50% - 50vw); margin-top:-28px; }
+.letter-viewport { position:sticky; top:0; height:100svh; overflow:clip; isolation:isolate; --letter-shift:150svh; }
+.letter-viewport .scrapbook-meta { position:absolute; top:28px; }
+.letter-viewport .fence-envelope { position:absolute; z-index:1; top:13svh; left:50%; width:min(calc(100% - 84px),1036px); height:73svh; min-height:0; margin:0; transform:translateX(-50%) rotate(-2deg); padding:0 44px; }
+.letter-viewport .fence-envelope h1.vector-title { position:absolute; top:50%; left:50%; width:min(70%,560px); margin:0; transform:translate(-50%,-50%); }
+.letter-viewport .vector-title img { max-height:48svh; object-fit:contain; }
+.letter-viewport .envelope-subtitle { top:9%; }
+.letter-viewport .envelope-footer { position:absolute; bottom:calc(9% - 12px); left:44px; right:44px; margin:0; }
+.letter-viewport .field-notes { position:absolute; z-index:2; left:50%; top:50%; width:min(calc(100% - 134px),986px); margin:0; transform:translate(-50%,calc(-50% + var(--letter-shift))); }
+body.scrapbook-home:not(.contents-page) .scrapbook-footer { padding-top:16px; }
+@media(max-width:650px) {
+ .letter-scroll-scene { margin-top:-24px; }
+ .letter-viewport .scrapbook-meta { top:24px; }
+ .letter-viewport .fence-envelope { width:calc(100% - 44px); padding-inline:18px; }
+ .letter-viewport .fence-envelope h1.vector-title { width:78%; }
+ .letter-viewport .envelope-footer { left:18px; right:18px; }
+ .letter-viewport .field-notes { width:calc(100% - 52px); }
+}
+
+/* The envelope covers the letter until it is pulled out through the upper edge. */
+.letter-viewport { --letter-shift:80px; --envelope-shift:0px; }
+.letter-viewport .field-notes { z-index:0; visibility:hidden; }
+.letter-viewport .fence-envelope { transform:translate(-50%,var(--envelope-shift)) rotate(-2deg); }
+.letter-viewport .scrapbook-meta { z-index:3; }
+
+/* Size the complete letter to fit behind the envelope with breathing room. */
+.letter-viewport .field-notes { transform:translate(-50%,calc(-50% + var(--letter-shift))) scale(var(--letter-scale,.92)); transform-origin:center; }
+
+/* Keep the footer inside the scene so there is no extra page below it. */
+body.scrapbook-home:not(.contents-page) .fence-scrapbook { padding-bottom:0; }
+body.scrapbook-home:not(.contents-page) .letter-viewport .scrapbook-footer { position:absolute; z-index:3; bottom:36px; padding-top:0; }
+@media(max-width:650px) { body.scrapbook-home:not(.contents-page) .letter-viewport .scrapbook-footer { bottom:32px; } }
+
+.letter-viewport .field-notes { left:calc(50% - 10px); }
+
+.letter-viewport .photo-print { translate:-4px 0; }
+
+.letter-viewport .fence-envelope { left:calc(50% + 3px); }
+
+/* Contact shadow belongs to the envelope and travels with its scroll transform. */
+.letter-viewport .fence-envelope {
+  box-shadow:0 -12px 18px -7px rgba(15,20,10,.48), 3px 12px 16px rgba(23,32,17,.4);
+}
+
+.note-paper > p { width:85%; }
+
+/* House cover replaces the envelope while retaining the opening motion. */
+.letter-viewport .fence-envelope { width:min(calc(100% - 60px),800px); background:none; box-shadow:none; transform:translate(-50%,var(--envelope-shift)); filter:drop-shadow(3px 12px 10px #10130b55); }
+.letter-viewport .fence-envelope::after { display:none; }
+.home-house { position:absolute; inset:0; width:100%; height:100%; }
+.letter-viewport .fence-envelope h1.vector-title { top:22%; width:48%; }
+.letter-viewport .fence-envelope .vector-title img { max-height:18svh; }
+.letter-viewport .fence-envelope .envelope-subtitle { top:5%; font-size:clamp(10px,1.2vw,15px); }
+.letter-viewport .fence-envelope .envelope-footer { bottom:7%; left:15%; right:15%; font-size:9px; }
+.letter-viewport .fence-envelope .envelope-footer span { color:#202316; }
+.letter-viewport .fence-envelope .envelope-footer a { color:#202316; }
+@media(max-width:650px) { .letter-viewport .fence-envelope { width:calc(100% - 28px); } .letter-viewport .fence-envelope .envelope-footer { font-size:7px; gap:10px; } }
+
+/* Put the title below the house with a clear gap. */
+.letter-viewport .fence-envelope .home-house { height:75%; }
+.letter-viewport .fence-envelope h1.vector-title { top:78%; width:36%; transform:translateX(-50%); }
+.letter-viewport .fence-envelope .vector-title img { max-height:14svh; }
+.letter-viewport .fence-envelope .envelope-footer { bottom:28%; left:23%; right:23%; }
+.letter-viewport .fence-envelope .envelope-subtitle { top:0; }
+@media(max-width:650px) { .letter-viewport .fence-envelope h1.vector-title { width:48%; } .letter-viewport .fence-envelope .envelope-footer { left:16%; right:16%; } }
+
+/* Paper house collage with the supplied fence photograph. */
+.letter-viewport .fence-envelope .home-house { height:75%; }
+.letter-viewport .fence-envelope .envelope-subtitle { top:26%; color:#202316; }
+.letter-viewport .fence-envelope .envelope-footer { bottom:28%; left:23%; right:23%; }
+
+/* Title sits across the lower roof and above the photograph, like the reference. */
+.letter-viewport .fence-envelope h1.vector-title { top:20%; width:43%; transform:translateX(-50%); }
+.letter-viewport .fence-envelope .vector-title img { max-height:18svh; }
+.letter-viewport .fence-envelope .envelope-subtitle { top:8%; color:#f9da9c; }
+@media(max-width:650px) { .letter-viewport .fence-envelope h1.vector-title { width:48%; top:23%; } }
+
+/* Fill the opening screen with the house, without the rectangular texture. */
+.letter-viewport .fence-envelope { top:8svh; width:min(calc(100% - 24px),1100px); height:84svh; }
+.letter-viewport .fence-envelope .home-house { height:100%; }
+.letter-viewport .fence-envelope h1.vector-title { top:28%; width:43%; }
+.letter-viewport .fence-envelope .vector-title img { max-height:22svh; }
+.letter-viewport .fence-envelope .envelope-subtitle { top:15%; color:#202316; }
+.letter-viewport .fence-envelope .envelope-footer { bottom:7%; left:19%; right:19%; }
+@media(max-width:650px) { .letter-viewport .fence-envelope { width:calc(100% - 16px); } .letter-viewport .fence-envelope h1.vector-title { top:30%; width:48%; } }
+
+/* Match the photograph's warm yellow and give the stars breathing room. */
+.letter-viewport .home-house { overflow:visible; }
+.letter-viewport .fence-envelope h1.vector-title { top:25%; }
+.letter-viewport .fence-envelope .envelope-subtitle { top:18%; }
+@media(max-width:650px) { .letter-viewport .fence-envelope h1.vector-title { top:27%; } .letter-viewport .fence-envelope .envelope-subtitle { top:20%; } }
+
+/* Let the foreground stars extend beyond the house cover. */
+.letter-viewport .fence-envelope { overflow:visible; }
+.letter-viewport .fence-envelope .home-house { overflow:visible; }
+.letter-viewport .fence-envelope h1.vector-title { top:23%; }
+.letter-viewport .fence-envelope .envelope-subtitle { top:20.5%; font-family:Arial,sans-serif; font-size:11px; line-height:1.4; letter-spacing:.12em; }
+@media(max-width:650px) { .letter-viewport .fence-envelope h1.vector-title { top:25%; } .letter-viewport .fence-envelope .envelope-subtitle { top:22%; font-size:8px; } }
+
+/* Scatter two distinct paper-star shapes across the screen. */
+.house-stars { position:absolute; inset:0 auto 0 50%; width:100vw; transform:translateX(-50%); pointer-events:none; z-index:2; }
+.house-star { position:absolute; width:clamp(44px,6vw,94px); height:auto; filter:url(#star-cream); opacity:.9; }
+.star-one { left:8%; top:0; transform:rotate(-19deg); }
+.star-two { right:6%; top:19%; width:clamp(36px,4.4vw,72px); transform:rotate(17deg); }
+.star-three { left:2%; top:48%; width:clamp(34px,4.8vw,78px); transform:rotate(-8deg); }
+.star-four { right:2%; top:69%; transform:rotate(28deg); }
+.star-five { left:20%; top:90%; width:clamp(32px,4.2vw,68px); transform:rotate(-33deg); }
+.star-six { right:18%; top:1%; width:clamp(30px,3.8vw,62px); transform:rotate(10deg); }
+
+.letter-viewport .fence-envelope .envelope-footer { align-items:baseline; }
+.letter-viewport .fence-envelope .envelope-footer > span { top:0; }
+
+/* Static house-only home. */
+body.scrapbook-home:not(.contents-page) .letter-scroll-scene { height:100svh; }
+body.scrapbook-home:not(.contents-page) .letter-viewport { position:relative; --envelope-shift:0px; }
+
+/* Uniform stars with a little space around the house. */
+.house-stars .house-star { width:clamp(44px,5.5vw,86px); }
+.house-stars .star-one { left:15%; top:4%; }
+.house-stars .star-two { right:17%; top:15%; }
+.house-stars .star-three { left:7%; top:44%; }
+.house-stars .star-four { right:7%; top:47%; }
+.house-stars .star-five { left:13%; top:88%; }
+.house-stars .star-six { right:13%; top:88%; }
+
+.letter-viewport .fence-envelope h1.vector-title { top:26%; }
+@media(max-width:650px) { .letter-viewport .fence-envelope h1.vector-title { top:28%; } }
+
+/* Stronger paper grain sits above every layer within the house silhouette. */
+.house-paper-overlay { position:absolute; inset:0; width:100%; height:100%; z-index:5; pointer-events:none; mix-blend-mode:multiply; opacity:.58; }
+
+.letter-viewport .fence-envelope .envelope-subtitle { top:22%; }
+@media(max-width:650px) { .letter-viewport .fence-envelope .envelope-subtitle { top:23.5%; } }
+
+/* Paper grain across the dark home background, behind the house. */
+body.scrapbook-home:not(.contents-page) .letter-viewport::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:url("assets/house-paper-texture.png") center / cover;
+  filter:grayscale(1) contrast(1.6);
+  mix-blend-mode:soft-light;
+  opacity:.42;
+}
+
+/* Give the paper grain its original green backdrop inside the isolated scene. */
+body.scrapbook-home:not(.contents-page) .letter-viewport { background:#202316; }
+body.scrapbook-home:not(.contents-page) .letter-viewport::before { opacity:.28; }
+
+/* Enlarge one paper image across the background without tiled seams. */
+body.scrapbook-home:not(.contents-page) .letter-viewport::before {
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  opacity:.38;
+}
+
+/* The house acts as a link with a gentle sideways tilt. */
+.letter-viewport .fence-envelope { transition:transform 400ms ease; transform-origin:50% 65%; }
+.house-collection-link { position:absolute; inset:0; z-index:6; cursor:pointer; }
+.house-collection-link:focus-visible { outline:2px solid #f9dda1; outline-offset:4px; }
+@media(hover:hover) {
+  .letter-viewport .fence-envelope:hover { transform:translate(-50%,var(--envelope-shift)) rotate(2deg); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .letter-viewport .fence-envelope { transition:none; }
+  .letter-viewport .fence-envelope:hover { transform:translate(-50%,var(--envelope-shift)); }
+}
+
+/* Set the title diagonally across the house. */
+.letter-viewport .fence-envelope h1.vector-title { transform:translateX(-50%) rotate(-7deg); transform-origin:center; }
+
+/* Keep the stars outside the tilting house, at their existing positions. */
+.letter-viewport > .house-stars { inset:8svh auto auto calc(50% + 3px); height:84svh; filter:drop-shadow(3px 12px 10px #10130b55); }
+
+.letter-viewport .fence-envelope h1.vector-title { left:calc(50% - 14px); }
+
+/* Hit-test the painted house silhouette rather than its rectangular container. */
+.letter-viewport .fence-envelope { pointer-events:none; }
+.letter-viewport .fence-envelope * { pointer-events:none; }
+.house-collection-link svg { display:block; width:100%; height:100%; }
+.letter-viewport .fence-envelope .house-collection-link path { pointer-events:fill; cursor:pointer; }
+.letter-viewport .fence-envelope .envelope-footer a { pointer-events:auto; }

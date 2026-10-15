@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="entry-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entry 2 — Privacy</title>
+  <link rel="stylesheet" href="style.css?v=92" />
+  <link rel="stylesheet" href="entry-2.css?v=28" />
+</head>
+<body class="entry-page chapter-two">
+  <header class="chapter-navigation"><a href="table-of-contents.html">← Table of Contents</a><span>02 / PRIVACY</span><a href="entry-3.html">03 Decoration ↗</a></header>
+  <main>
+    <section class="chain-panel" aria-label="Chain-link fence">
+      <div class="chain-collage">
+        <img class="chain-street" src="assets/chain-street-sepia.png" alt="New York sidewalk, trees and brownstone fire escapes" />
+      </div>
+
+      <div class="chain-fixed-window">
+      <svg class="chain-overlay" viewBox="0 0 1838 1344" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+        <defs>
+          <filter id="chain-green" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="0 0 0 0 .976470588 0 0 0 0 .854901961 0 0 0 0 .611764706 -.2126 -.7152 -.0722 0 1" />
+            <feComponentTransfer><feFuncA type="discrete" tableValues="0 1" /></feComponentTransfer>
+          </filter>
+
+        </defs>
+        <image href="assets/chainlink-source.jpg" width="1838" height="1344" filter="url(#chain-green)" />
+      </svg>
+        <img class="chain-card chain-card-center" src="assets/fence1_v3.png" alt="Decorative iron door study" />
+        <button class="privacy-toggle" type="button" aria-label="Show chain" aria-expanded="false"><img class="chain-calligraphy" src="assets/chain-calligraphy.svg?v=3" alt="Privacy" /></button>
+      </div>
+    </section>
+  </main>
+  <footer class="chapter-footer"><span>02 — Privacy</span><a href="index.html">Back to Home ↑</a></footer>
+  <script>
+    const privacyButton = document.querySelector('.privacy-toggle');
+    const chainLayer = document.querySelector('.chain-overlay');
+    let hovering = false;
+    let focused = false;
+    const updateChain = () => {
+      const visible = hovering || focused;
+      chainLayer.classList.toggle('is-visible', visible);
+      privacyButton.setAttribute('aria-expanded', String(visible));
+    };
+    privacyButton.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'touch') return;
+      hovering = true;
+      updateChain();
+    });
+    privacyButton.addEventListener('pointerleave', () => {
+      hovering = false;
+      updateChain();
+    });
+    privacyButton.addEventListener('focus', () => {
+      focused = privacyButton.matches(':focus-visible');
+      updateChain();
+    });
+    privacyButton.addEventListener('blur', () => {
+      focused = false;
+      updateChain();
+    });
+    privacyButton.addEventListener('click', () => {
+      if (window.matchMedia('(hover: none)').matches) {
+        focused = !focused;
+        updateChain();
+      }
+    });
+  </script>
+</body>
+</html>
