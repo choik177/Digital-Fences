@@ -1,6 +1,6 @@
-body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display:flex; flex-direction:column; font-family:"PP Writer",Georgia,serif; }
+body.puzzle-page { background:#080900; color:#d8c58c; min-height:100svh; display:flex; flex-direction:column; font-family:"PP Writer",Georgia,serif; }
 .puzzle-navigation,.puzzle-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:24px 4%; font:11px Arial,sans-serif; letter-spacing:.08em; }
-.puzzle-navigation { position:sticky; top:0; background:#202316; z-index:5; }
+.puzzle-navigation { position:sticky; top:0; background:#080900; z-index:5; }
 .puzzle-page a { color:inherit; text-decoration:none; }
 .puzzle-page a:hover { text-decoration:underline; }
 .puzzle-page a:focus-visible { outline:1px solid currentColor; outline-offset:5px; }
@@ -14,21 +14,21 @@ body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display
 .decoration-studio { display:grid; grid-template-columns:3fr 1fr; min-height:calc(100svh - 230px); }
 .arched-windows { display:flex; align-items:center; justify-content:center; gap:5.5%; padding:60px 9%; }
 .arched-window { position:relative; width:28%; aspect-ratio:1 / 2; border-radius:100% 100% 0 0 / 50% 50% 0 0; background:#f9dda1; overflow:hidden; }
-.arched-window::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent calc(50% - 3px),#202316 calc(50% - 3px),#202316 calc(50% + 3px),transparent calc(50% + 3px)),linear-gradient(transparent 36%,#202316 36%,#202316 39%,transparent 39%,transparent 76%,#202316 76%,#202316 79%,transparent 79%); pointer-events:none; }
+.arched-window::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent calc(50% - 3px),#080900 calc(50% - 3px),#080900 calc(50% + 3px),transparent calc(50% + 3px)),linear-gradient(transparent 36%,#080900 36%,#080900 39%,transparent 39%,transparent 76%,#080900 76%,#080900 79%,transparent 79%); pointer-events:none; }
 .pattern-collection { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1.2fr .8fr 1fr; gap:22px 14px; padding:24px 18px; background:#f9dda1; }
 .pattern-slot { min-width:0; display:flex; align-items:center; justify-content:center; }
 .pattern-piece { display:block; width:100%; height:100%; max-height:180px; object-fit:contain; mix-blend-mode:multiply; cursor:grab; touch-action:none; user-select:none; -webkit-user-drag:none; position:relative; z-index:2; transform:translate(var(--drag-x,0px),var(--drag-y,0px)); }
 .pattern-slot.vine .pattern-piece { width:55%; }
 .pattern-slot.small .pattern-piece { width:75%; }
 .pattern-piece.is-dragging { cursor:grabbing; z-index:10; }
-.pattern-piece:focus-visible { outline:1px dashed #53603a; outline-offset:5px; }
+.pattern-piece:focus-visible { outline:none; }
 @media(max-width:600px) {
   .puzzle-content { padding:20px 3%; }
   .puzzle-content h1 { margin-bottom:24px; }
   .decoration-studio { grid-template-columns:3fr 1.2fr; min-height:calc(100svh - 200px); }
   .arched-windows { padding:40px 7%; gap:7%; }
   .arched-window { width:28%; aspect-ratio:1 / 2.4; }
-  .arched-window::after { background:linear-gradient(90deg,transparent calc(50% - 2px),#202316 calc(50% - 2px),#202316 calc(50% + 2px),transparent calc(50% + 2px)),linear-gradient(transparent 36%,#202316 36%,#202316 39%,transparent 39%,transparent 76%,#202316 76%,#202316 79%,transparent 79%); }
+  .arched-window::after { background:linear-gradient(90deg,transparent calc(50% - 2px),#080900 calc(50% - 2px),#080900 calc(50% + 2px),transparent calc(50% + 2px)),linear-gradient(transparent 36%,#080900 36%,#080900 39%,transparent 39%,transparent 76%,#080900 76%,#080900 79%,transparent 79%); }
   .pattern-collection { padding:18px 8px; gap:18px 8px; }
   .pattern-piece { max-height:150px; }
 }
@@ -53,7 +53,7 @@ body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display
 .pattern-collection { background:#f9dda1; }
 .decoration-controls { display:flex; justify-content:flex-end; padding:0 0 12px; }
 .decoration-reset { background:transparent; color:#f9dda1; border:1px solid #d8c58c; padding:8px 14px; font:11px Arial,sans-serif; letter-spacing:.08em; cursor:pointer; }
-.decoration-reset:hover { background:#f9dda1; color:#202316; }
+.decoration-reset:hover { background:#f9dda1; color:#080900; }
 .decoration-reset:focus-visible { outline:2px solid #f9dda1; outline-offset:4px; }
 @media(max-width:600px) { .arched-windows { padding:24px 7%; gap:6%; } .arched-window { width:29%; } }
 
@@ -70,7 +70,7 @@ body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display
 
 /* Repeat the supplied frieze across the top of the ornament tray. */
 .decoration-controls { min-height:54px; box-sizing:border-box; align-items:center; padding:4px 10px; background:#f9dda1 url("assets/decoration-fence-bar.png") left center / auto 100% repeat-x; }
-.decoration-reset { color:#202316; background:#f9dda1dd; border-radius:50%; }
+.decoration-reset { color:#080900; background:#f9dda1dd; border-radius:50%; }
 .decoration-reset:hover { color:#38452b; background:#f9dda1; }
 .decoration-reset:focus-visible { outline-color:#38452b; }
 @media(max-width:600px) { .decoration-controls { min-height:48px; padding-block:2px; } }
@@ -96,7 +96,7 @@ body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display
 
 /* Continue the yellow tray through the bottom labels. */
 .puzzle-content { padding-bottom:0; }
-.puzzle-footer { background:#f9dda1; color:#202316; border-top:0; }
+.puzzle-footer { background:#080900; color:#f9dda1; border-top:0; }
 
 
 /* Five remaining ornaments, with a slightly larger heart-scroll stamp. */
@@ -142,7 +142,7 @@ body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display
 
 /* Use one shared thickness for horizontal and vertical window bars. */
 .arched-window { --bar-half:3px; }
-.arched-window::after { background:linear-gradient(90deg,transparent calc(50% - var(--bar-half)),#202316 calc(50% - var(--bar-half)),#202316 calc(50% + var(--bar-half)),transparent calc(50% + var(--bar-half))),linear-gradient(transparent calc(37.5% - var(--bar-half)),#202316 calc(37.5% - var(--bar-half)),#202316 calc(37.5% + var(--bar-half)),transparent calc(37.5% + var(--bar-half)),transparent calc(77.5% - var(--bar-half)),#202316 calc(77.5% - var(--bar-half)),#202316 calc(77.5% + var(--bar-half)),transparent calc(77.5% + var(--bar-half))); }
+.arched-window::after { background:linear-gradient(90deg,transparent calc(50% - var(--bar-half)),#080900 calc(50% - var(--bar-half)),#080900 calc(50% + var(--bar-half)),transparent calc(50% + var(--bar-half))),linear-gradient(transparent calc(37.5% - var(--bar-half)),#080900 calc(37.5% - var(--bar-half)),#080900 calc(37.5% + var(--bar-half)),transparent calc(37.5% + var(--bar-half)),transparent calc(77.5% - var(--bar-half)),#080900 calc(77.5% - var(--bar-half)),#080900 calc(77.5% + var(--bar-half)),transparent calc(77.5% + var(--bar-half))); }
 @media(max-width:600px) { .arched-window { --bar-half:2px; } }
 
 /* Repeat the same full-width decorative frieze below the title. */
@@ -153,7 +153,7 @@ body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display
 .decoration-studio { grid-template-rows:1fr; }
 .pattern-drawer { position:fixed; z-index:10; left:0; bottom:0; width:100%; transform:translateY(calc(100% - 44px)); transition:transform 400ms ease; }
 .pattern-drawer.is-open { transform:translateY(0); }
-.pattern-drawer-toggle { display:block; margin:0 auto; width:64px; height:44px; border:0; border-radius:12px 12px 0 0; background:#f9dda1; color:#202316; font:28px Arial,sans-serif; cursor:pointer; }
+.pattern-drawer-toggle { display:block; margin:0 auto; width:64px; height:44px; border:0; border-radius:12px 12px 0 0; background:#f9dda1; color:#080900; font:28px Arial,sans-serif; cursor:pointer; }
 .pattern-drawer .decoration-controls,.pattern-drawer .pattern-collection { width:100%; margin-left:0; }
 .pattern-drawer-toggle:focus-visible { outline:2px solid #8c9870; outline-offset:-4px; }
 @media(prefers-reduced-motion:reduce) { .pattern-drawer { transition:none; } }
@@ -170,7 +170,7 @@ body.puzzle-page { background:#202316; color:#d8c58c; min-height:100svh; display
 .pattern-drawer .pattern-piece { max-height:140px; height:100%; scale:1; }
 .placed-ornament { position:absolute; z-index:8; object-fit:contain; cursor:grab; touch-action:none; user-select:none; mix-blend-mode:multiply; }
 .placed-ornament.is-dragging { z-index:30; cursor:grabbing; }
-.placed-ornament:focus-visible { outline:1px dashed #8c9870; outline-offset:5px; }
+.placed-ornament:focus-visible { outline:none; }
 @media(max-width:600px) { .pattern-drawer { padding-inline:10px; } .pattern-drawer .pattern-collection { grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:130px; padding:14px; gap:20px; } .pattern-drawer .pattern-piece { max-height:120px; } }
 
 /* Move the windows into the upper half while the folder is open. */
@@ -196,3 +196,126 @@ body:not(.folder-open) .arched-windows { transform:translateY(-24px); }
 .decoration-logo-crest img { display:block; width:100%; height:54px; object-fit:contain; }
 body.folder-open .decoration-logo-divider { visibility:hidden; }
 @media(max-width:600px) { .decoration-logo-divider { gap:18px; height:46px; margin-bottom:8px; } .decoration-logo-crest { flex-basis:52px; } .decoration-logo-crest img { height:46px; } }
+
+/* Match the Fence crest's width and padding at every viewport size. */
+.decoration-logo-divider { height:110px; }
+.decoration-logo-crest { flex:0 0 110px; width:110px; padding:0 12px; }
+.decoration-logo-crest img { width:100%; height:auto; }
+
+/* Reveal promptly on scroll; leave only the tab visible while closed. */
+.pattern-drawer { transition:transform 230ms cubic-bezier(.2,.8,.2,1),background-color 150ms ease; }
+.pattern-drawer:not(.is-open) { background:transparent; box-shadow:none; }
+.pattern-drawer:not(.is-open)::before { opacity:0; }
+@media(prefers-reduced-motion:reduce) { .pattern-drawer { transition:none; } }
+
+/* Use a slower, softer motion in both directions. */
+.pattern-drawer { transition:transform 650ms cubic-bezier(.22,.68,.3,1),background-color 300ms ease; }
+@media(prefers-reduced-motion:reduce) { .pattern-drawer { transition:none; } }
+
+/* Native scrolling controls the folder; reserve its layout space to avoid jumps. */
+body.puzzle-page { min-height:calc(100svh + 160px); }
+body.folder-open .decoration-studio { min-height:calc(100svh - 230px); }
+.pattern-drawer { will-change:transform; transition:transform 450ms cubic-bezier(.22,.61,.36,1); }
+body.folder-open .arched-windows { animation:none; }
+@media(max-width:600px) { body.folder-open .decoration-studio { min-height:calc(100svh - 200px); } }
+@media(prefers-reduced-motion:reduce) { .pattern-drawer { transition:none; } }
+
+/* Override the shared landing-page scroll lock for this chapter. */
+html.decoration-root { height:auto; min-height:100%; overflow-x:clip; overflow-y:auto; }
+html.decoration-root body.puzzle-page { height:auto; min-height:calc(100svh + 160px); overflow:visible; }
+
+/* Tighten the space immediately below the chapter navigation. */
+.puzzle-content { padding-top:8px; }
+
+/* Remove the darker folder backing in both open and closed states. */
+.pattern-drawer,.pattern-drawer.is-open { background:transparent; box-shadow:none; }
+.pattern-drawer::before { display:none; }
+
+/* Fill the viewport width with the folder paper. */
+.pattern-drawer { padding-inline:0; }
+#pattern-drawer-content { border-radius:0; }
+
+/* Slightly smaller sticker thumbnails without changing folder spacing. */
+.pattern-drawer .pattern-piece { width:85%; height:85%; max-height:119px; }
+.pattern-drawer .pattern-slot.vine .pattern-piece { width:47%; }
+@media(max-width:600px) { .pattern-drawer .pattern-piece { max-height:102px; } }
+
+/* Balance the individual sticker sizes within their existing slots. */
+.pattern-drawer .pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { width:100%; height:100%; max-height:145px; }
+.pattern-drawer .pattern-piece[src="assets/paired-scroll-green-transparent.png"] { width:68%; height:72%; max-height:102px; }
+.pattern-drawer .pattern-piece[src="assets/fence14-ornament.png"] { width:94%; height:94%; max-height:132px; }
+@media(max-width:600px) {
+  .pattern-drawer .pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { max-height:125px; }
+  .pattern-drawer .pattern-piece[src="assets/paired-scroll-green-transparent.png"] { max-height:88px; }
+  .pattern-drawer .pattern-piece[src="assets/fence14-ornament.png"] { max-height:114px; }
+}
+
+.pattern-drawer .pattern-piece[src="assets/paired-scroll-green-transparent.png"] { width:52%; height:58%; max-height:82px; }
+
+/* Match the warm yellow and near-black palette of the Fence reference. */
+body.puzzle-page,.puzzle-navigation { background:#080900; }
+.arched-window { background:#fbdda0; }
+
+.pattern-drawer .pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { width:100%; height:180px; max-height:180px; }
+@media(max-width:600px) { .pattern-drawer .pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { height:155px; max-height:155px; } }
+
+/* Three empty vintage stamped frames replace the arched panes. */
+.arched-window { background:transparent; border:0; border-radius:0; box-shadow:none; overflow:visible; aspect-ratio:1 / 1.65; }
+.arched-window::after { display:none; }
+.window-stamp-frame { display:block; width:100%; height:100%; object-fit:fill; pointer-events:none; user-select:none; }
+body.folder-open .arched-window { aspect-ratio:1 / 1.65; }
+
+/* Yellow ink for both folder originals and their placed copies. */
+body.puzzle-page .pattern-drawer .pattern-piece,body.puzzle-page .placed-ornament { filter:url(#sticker-frame-yellow); mix-blend-mode:normal; }
+body.puzzle-page .pattern-drawer .pattern-piece[src="assets/poem-fence18.svg"],body.puzzle-page .placed-ornament[src="assets/poem-fence18.svg"] { filter:url(#vine-frame-yellow); }
+
+/* Green sticker sheet for contrast with the yellow ornaments. */
+.pattern-drawer .pattern-collection { background-color:#38452b; background-image:linear-gradient(#f9dda11a 1px,transparent 1px),linear-gradient(90deg,#f9dda11a 1px,transparent 1px); scrollbar-color:#8c9870 #38452b; }
+
+/* Match all folder paper and controls to the green sticker sheet. */
+#pattern-drawer-content,.pattern-drawer-toggle,.pattern-drawer .decoration-controls { background:#38452b; color:#f9dda1; }
+.pattern-drawer .decoration-reset,.pattern-drawer .decoration-reset:hover { background:transparent; color:#f9dda1; }
+.pattern-drawer .decoration-reset:focus-visible { outline-color:#f9dda1; }
+
+/* Attached stickers inherit their frame movement and size. */
+.arched-window > .placed-ornament { position:absolute; z-index:2; max-width:none; max-height:none; }
+
+/* Restore the original deep green throughout the ornament folder. */
+#pattern-drawer-content,.pattern-drawer-toggle,.pattern-drawer .decoration-controls { background:#202316; }
+.pattern-drawer .pattern-collection { background-color:#202316; scrollbar-color:#8c9870 #202316; }
+
+.window-stamp-cross { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; user-select:none; }
+
+/* Larger source stickers; their displayed size is preserved on drop. */
+.pattern-drawer .pattern-piece { scale:1.15; }
+
+/* Decorative friezes cap the top and bottom of each window frame. */
+.arched-window::before,.arched-window::after { content:""; display:block; position:absolute; left:0; right:0; height:26px; z-index:1; background:#fbdda0 url("assets/decoration-fence-bar.png") center / auto 100% repeat-x; pointer-events:none; }
+.arched-window::before { top:0; }
+.arched-window::after { top:auto; bottom:0; }
+body.folder-open .arched-window::before,body.folder-open .arched-window::after { height:22px; }
+@media(max-width:600px) { .arched-window::before,.arched-window::after,body.folder-open .arched-window::before,body.folder-open .arched-window::after { height:18px; } }
+
+/* Size the heart sticker to fit a frame before it is picked up. */
+.pattern-drawer .pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { width:min(95%,190px); height:130px; max-height:130px; scale:1; }
+@media(max-width:600px) { .pattern-drawer .pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { width:min(95%,130px); height:90px; max-height:90px; } }
+
+/* Adjust all copies of the heart and horizontal spiral stickers. */
+.pattern-drawer .pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { width:min(100%,210px); height:144px; max-height:144px; scale:1; }
+.pattern-drawer .pattern-piece[src="assets/paired-scroll-green-transparent.png"] { width:43%; height:48%; max-height:68px; scale:1; }
+@media(max-width:600px) { .pattern-drawer .pattern-piece[src="assets/fence-heart-scroll-stamp.png"] { width:min(100%,145px); height:100px; max-height:100px; } }
+
+/* Continuous dark green paper behind the ornament collection. */
+.pattern-drawer #pattern-drawer-content,
+.pattern-drawer .pattern-drawer-toggle {
+  background-color:#191c12;
+  background-image:url("assets/house-paper-texture.png");
+  background-position:left top;
+  background-size:100vw auto;
+  background-repeat:no-repeat;
+  background-blend-mode:soft-light;
+}
+.pattern-drawer .pattern-collection,
+.pattern-drawer .decoration-controls {
+  background:transparent;
+}

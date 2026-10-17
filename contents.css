@@ -103,3 +103,8 @@ body.contents-page { background:#e9ddb9; }
 /* One continuous paper image across the open book, without tiled seams. */
 .contents-page .book-page::after { display:none; }
 .contents-page .archive-book::after { content:""; position:absolute; inset:0; pointer-events:none; z-index:2; background:url("assets/house-paper-texture.png") center / cover no-repeat; mix-blend-mode:multiply; opacity:.38; }
+
+/* Cast a shadow from the bookmark's notched silhouette. */
+.contents-page .archive-stamp { background:transparent; clip-path:none; filter:drop-shadow(3px 7px 5px #30382345); }
+.contents-page .archive-stamp::before { content:""; position:absolute; inset:0; z-index:-1; background:#d8c58c; clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 22px),0 100%); }
+.contents-page .archive-stamp::after { clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 22px),0 100%); }

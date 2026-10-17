@@ -4,7 +4,11 @@
   const content = document.querySelector('#pattern-drawer-content');
   const collection = document.querySelector('.pattern-collection');
   if (!drawer || !toggle || !collection) return;
+  let autoOpenAfter = 0;
+  let scrollIntent = 0;
   const setOpen = open => {
+    if (!open) autoOpenAfter = Date.now() + 700;
+    scrollIntent = 0;
     drawer.classList.toggle('is-open', open);
     document.body.classList.toggle('folder-open', open);
     toggle.setAttribute('aria-expanded', String(open));
@@ -12,6 +16,16 @@
     toggle.querySelector('.folder-arrow').textContent = open ? '↓' : '↑';
     content.inert = !open;
   };
+  // Let native page scrolling drive the folder without cancelling wheel/touch input.
+  let scrollFrame = 0;
+  const updateFromScroll = () => {
+    scrollFrame = 0;
+    const open = window.scrollY > 64;
+    if (drawer.classList.contains('is-open') !== open) setOpen(open);
+  };
+  window.addEventListener('scroll', () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateFromScroll);
+  }, {passive:true});
   let swipe = null, ignoreClick = false;
   toggle.addEventListener('pointerdown', e => {
     swipe = {id:e.pointerId, y:e.clientY};
@@ -49,13 +63,33 @@
     piece.style.left = `${x}px`;
     piece.style.top = `${y}px`;
   };
+  const attachToWindow = (piece, window) => {
+    const bounds = piece.getBoundingClientRect();
+    const frame = window.getBoundingClientRect();
+    // Keep the exact dragged size and position; only change coordinate systems.
+    const width = bounds.width;
+    const height = bounds.height;
+    const left = bounds.left - frame.left;
+    const top = bounds.top - frame.top;
+    window.append(piece);
+    piece.style.left = `${left / frame.width * 100}%`;
+    piece.style.top = `${top / frame.height * 100}%`;
+    piece.style.width = `${width / frame.width * 100}%`;
+    piece.style.height = `${height / frame.height * 100}%`;
+  };
   const keyboardMove = (piece, e) => {
     if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); piece.remove(); return; }
     const steps = {ArrowLeft:[-1,0], ArrowRight:[1,0], ArrowUp:[0,-1], ArrowDown:[0,1]};
     if (!steps[e.key]) return;
     e.preventDefault();
     const step = e.shiftKey ? 20 : 5;
-    position(piece, parseFloat(piece.style.left) + steps[e.key][0] * step, parseFloat(piece.style.top) + steps[e.key][1] * step);
+    if (piece.parentElement.classList.contains('arched-window')) {
+      const frame = piece.parentElement.getBoundingClientRect();
+      piece.style.left = `${parseFloat(piece.style.left) + steps[e.key][0] * step / frame.width * 100}%`;
+      piece.style.top = `${parseFloat(piece.style.top) + steps[e.key][1] * step / frame.height * 100}%`;
+    } else {
+      position(piece, parseFloat(piece.style.left) + steps[e.key][0] * step, parseFloat(piece.style.top) + steps[e.key][1] * step);
+    }
   };
   const makeSticker = source => {
     const box = source.getBoundingClientRect();
@@ -74,7 +108,12 @@
     if (e.button !== 0 || drag) return;
     e.preventDefault();
     const rect = piece.getBoundingClientRect();
-    drag = {piece, id:e.pointerId, dx:e.clientX - rect.left, dy:e.clientY - rect.top, fresh};
+    const previous = {parent:piece.parentElement, style:piece.getAttribute('style')};
+    document.body.append(piece);
+    piece.style.width = `${rect.width}px`;
+    piece.style.height = `${rect.height}px`;
+    position(piece, rect.left + scrollX, rect.top + scrollY);
+    drag = {piece, id:e.pointerId, dx:e.clientX - rect.left, dy:e.clientY - rect.top, fresh, previous};
     piece.classList.add('is-dragging');
     piece.focus({preventScroll:true});
     piece.setPointerCapture(e.pointerId);
@@ -91,6 +130,7 @@
       const piece = makeSticker(source);
       const target = document.querySelector('.arched-window').getBoundingClientRect();
       position(piece, target.left + scrollX + (target.width - parseFloat(piece.style.width)) / 2, target.top + scrollY + (target.height - parseFloat(piece.style.height)) / 2);
+      attachToWindow(piece, document.querySelector('.arched-window'));
       piece.focus({preventScroll:true});
     });
   });
@@ -100,17 +140,25 @@
   });
   const finish = e => {
     if (!drag || drag.id !== e.pointerId) return;
-    const {piece, fresh} = drag;
+    const {piece, fresh, previous} = drag;
     drag = null;
     piece.classList.remove('is-dragging');
     if (piece.hasPointerCapture(e.pointerId)) piece.releasePointerCapture(e.pointerId);
     const bounds = piece.getBoundingClientRect();
     const windows = [...document.querySelectorAll('.arched-window')];
-    const overlapsWindow = windows.some(window => {
+    const target = windows.map(window => {
       const r = window.getBoundingClientRect();
-      return bounds.right > r.left && bounds.left < r.right && bounds.bottom > r.top && bounds.top < r.bottom;
-    });
-    if (e.type === 'pointercancel' || (fresh && !overlapsWindow)) piece.remove();
+      const overlap = Math.max(0, Math.min(bounds.right, r.right) - Math.max(bounds.left, r.left)) * Math.max(0, Math.min(bounds.bottom, r.bottom) - Math.max(bounds.top, r.top));
+      return {window, overlap};
+    }).sort((a,b) => b.overlap - a.overlap)[0];
+    if (e.type !== 'pointercancel' && target?.overlap > 0) {
+      attachToWindow(piece, target.window);
+    } else if (!fresh && previous.parent.classList.contains('arched-window')) {
+      previous.parent.append(piece);
+      piece.setAttribute('style', previous.style);
+    } else {
+      piece.remove();
+    }
   };
   document.addEventListener('pointerup', finish);
   document.addEventListener('pointercancel', finish);
